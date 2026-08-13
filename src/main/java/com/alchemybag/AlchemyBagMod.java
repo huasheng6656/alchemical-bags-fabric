@@ -1,7 +1,8 @@
 package com.alchemybag;
 
-import cn.lchnn.hugestorage.HugeStorageMenu;
 import com.mojang.serialization.Codec;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import net.fabricmc.api.ModInitializer;
@@ -17,7 +18,10 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +33,7 @@ public final class AlchemyBagMod implements ModInitializer {
     public static final String MOD_ID = "alchemybag";
     public static final int CAPACITY = 810;
     public static final Item[] BAGS = new Item[16];
+    private static final Method HUGE_STORAGE_MENU_FACTORY = findHugeStorageMenuFactory();
     public static final DataComponentType<BagContents> BAG_CONTENTS = Registry.register(
         BuiltInRegistries.DATA_COMPONENT_TYPE,
         id("contents"),
@@ -53,6 +58,23 @@ public final class AlchemyBagMod implements ModInitializer {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
+    private static Method findHugeStorageMenuFactory() {
+        try {
+            Class<?> menuClass = Class.forName("cn.lchnn.hugestorage.HugeStorageMenu");
+            return menuClass.getMethod("createSingleServer", int.class, Inventory.class, Container.class);
+        } catch (ClassNotFoundException | NoSuchMethodException exception) {
+            throw new IllegalStateException("Huge Storage 90 1.0.1+ is required", exception);
+        }
+    }
+
+    private static AbstractContainerMenu createHugeStorageMenu(int containerId, Inventory inventory, Container contents) {
+        try {
+            return (AbstractContainerMenu) HUGE_STORAGE_MENU_FACTORY.invoke(null, containerId, inventory, contents);
+        } catch (IllegalAccessException | InvocationTargetException exception) {
+            throw new IllegalStateException("Failed to open Huge Storage menu", exception);
+        }
+    }
+
     public static final class AlchemicalBagItem extends Item {
         public AlchemicalBagItem(Properties properties) {
             super(properties);
@@ -64,7 +86,7 @@ public final class AlchemyBagMod implements ModInitializer {
             if (!level.isClientSide()) {
                 BagContainer contents = new BagContainer(bag);
                 player.openMenu(new SimpleMenuProvider(
-                    (containerId, inventory, ignored) -> HugeStorageMenu.createSingleServer(containerId, inventory, contents),
+                    (containerId, inventory, ignored) -> createHugeStorageMenu(containerId, inventory, contents),
                     bag.getHoverName()
                 ));
             }

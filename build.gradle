@@ -10,8 +10,6 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-    implementation files("../../HeiShan/26.2整合包/.minecraft/versions/26.2-Fabric/mods/huge-storage-90-1.1.4.jar")
-    implementation files("../../HeiShan/26.2整合包/.minecraft/versions/26.2-Fabric/mods/carpet-tis-addition-v1.82.3-mc26.2.jar")
 }
 
 processResources {

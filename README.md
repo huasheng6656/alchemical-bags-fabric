@@ -9,3 +9,18 @@ Standalone rewrite of ProjectE's Alchemical Bag experience for Minecraft Java 26
 - Recipe: 3 diamonds, matching wool, chest
 
 This is not ProjectE and provides no EMC or transmutation features.
+
+## Requirements
+
+- Minecraft Java 26.2
+- Fabric Loader 0.19.3+
+- Fabric API 0.155.0+26.2
+- Huge Storage 90 1.0.1+
+
+## Build
+
+```bash
+./gradlew build
+```
+
+Output: `build/libs/alchemical-bags-fabric-26.2-1.1.0.jar`
