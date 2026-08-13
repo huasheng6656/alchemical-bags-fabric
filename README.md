@@ -72,7 +72,7 @@ Linux 或 macOS：
 构建产物位于：
 
 ```text
-build/libs/alchemical-bags-fabric-26.2-1.1.0.jar
+build/libs/alchemical-bags-fabric-26.2-1.1.1.jar
 ```
 
 构建过程不依赖本地 Minecraft 整合包目录。
@@ -86,5 +86,6 @@ build/libs/alchemical-bags-fabric-26.2-1.1.0.jar
 ## 声明
 
 本项目不是 ProjectE 官方版本，也不隶属于 ProjectE、Mojang Studios 或 Microsoft。
+
 
 
