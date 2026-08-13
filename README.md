@@ -21,9 +21,9 @@
 - Java 25 或更高版本
 - Fabric Loader 0.19.3 或更高版本
 - Fabric API 0.155.0+26.2 或更高版本
-- Huge Storage 90 1.0.1 或更高版本
+- [Huge Storage 90](https://github.com/huasheng6656/huge-storage-90) 1.1.4 或更高版本
 
-Huge Storage 90 依赖 Carpet TIS Addition 和 Fabric Carpet。请按照 Huge Storage 90 的依赖要求安装对应版本。
+Huge Storage 90 本身可独立运行。需要 Carpet TIS Addition 大型木桶兼容时，再安装 Carpet TIS Addition 及 Fabric Carpet。
 
 ## 安装方法
 
@@ -86,3 +86,5 @@ build/libs/alchemical-bags-fabric-26.2-1.1.0.jar
 ## 声明
 
 本项目不是 ProjectE 官方版本，也不隶属于 ProjectE、Mojang Studios 或 Microsoft。
+
+

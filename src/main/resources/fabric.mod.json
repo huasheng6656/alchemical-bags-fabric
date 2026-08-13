@@ -8,5 +8,7 @@
   "license": "MIT",
   "environment": "*",
   "entrypoints": {"main": ["com.alchemybag.AlchemyBagMod"]},
-  "depends": {"fabricloader": ">=0.19.3", "minecraft": "~26.2", "java": ">=25", "fabric-api": "*", "hugestorage": ">=1.0.1"}
+  "depends": {"fabricloader": ">=0.19.3", "minecraft": "~26.2", "java": ">=25", "fabric-api": "*", "hugestorage": ">=1.1.4"}
 }
+
+
