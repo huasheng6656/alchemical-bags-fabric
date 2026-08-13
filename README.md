@@ -87,5 +87,6 @@ build/libs/alchemical-bags-fabric-26.2-1.1.1.jar
 
 本项目不是 ProjectE 官方版本，也不隶属于 ProjectE、Mojang Studios 或 Microsoft。
 
+## 友情链接
 
-
+[LINUX DO](https://linux.do/) —— 新的理想型社区
